@@ -8,16 +8,38 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseMessaging
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            //Parse errors and track state
+            if error == nil{
+                application.registerForRemoteNotifications()
+            }
+        }
+        
+        
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
+        let postref = FIRDatabase.database().reference().child("Posts")
+        postref.keepSynced(true)
         return true
+    }
+    
+    override init(){
+        super.init()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -36,12 +58,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        //FIRMessaging.messaging().connect { error in
+       //     print(error)
+      //  }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // print("MessageID : \(userInfo["gcm_message_id"]!)")
+        print(userInfo)
     }
 
     // MARK: - Core Data stack
