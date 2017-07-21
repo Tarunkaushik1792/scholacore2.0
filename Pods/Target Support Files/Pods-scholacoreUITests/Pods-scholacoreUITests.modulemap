@@ -1,0 +1,6 @@
+framework module Pods_scholacoreUITests {
+  umbrella header "Pods-scholacoreUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
