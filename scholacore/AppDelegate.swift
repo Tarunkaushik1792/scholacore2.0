@@ -35,7 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         FIRDatabase.database().persistenceEnabled = true
         let postref = FIRDatabase.database().reference().child("Posts")
         postref.keepSynced(true)
+        launchScreen()
         return true
+    }
+    
+    func launchScreen(){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyBoard = UIStoryboard(name: "Main" , bundle : nil)
+        var initialViewController:UIViewController!
+        if FIRAuth.auth()?.currentUser != nil {
+            initialViewController = storyBoard.instantiateViewController(withIdentifier: "Home")
+        }else{
+            initialViewController = storyBoard.instantiateViewController(withIdentifier: "LoginPage")
+        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
     }
     
     override init(){

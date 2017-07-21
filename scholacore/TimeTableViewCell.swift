@@ -54,7 +54,7 @@ class TimeTableViewCell: UITableViewCell {
             print("starting new timer and info is \(String(describing: lectureINfo?.subject))")
         }
         if now > (lectureINfo?.StartTime)! && now < (lectureINfo?.finishTime)! && dayOfWeek == (selectedSegment + 2){
-            dotVIew.isHidden = false
+            dotVIew.isHidden = true
             progressBar.isHidden = false
             timmerLabel.isHidden = false
             dotVIew.alpha = 0.0
@@ -66,7 +66,7 @@ class TimeTableViewCell: UITableViewCell {
             })
             
             UIView.animate(withDuration: 1, animations: {
-                self.backgroundColor = UIColor(red:153/255,green:0/255,blue:51/255,alpha:1.0)
+                self.backgroundColor = UIColor(red:95/255,green:145/255,blue:21/255,alpha:1.0)
                 self.subjectLabelView.textColor = UIColor.white
                 self.timmerLabel.textColor = UIColor.white
                 self.timingLabelView.textColor = UIColor.white
@@ -80,7 +80,7 @@ class TimeTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "h:mm a"
         let startTime = dateFormatter.string(from: (lectureINfo?.StartTime)!)
         let endTime = dateFormatter.string(from: (lectureINfo?.finishTime)!)
-        timingLabelView.text = " \(startTime) to \(endTime)"
+        timingLabelView.text = " \(startTime) \n TO \n \(endTime)"
     }
     
     
@@ -122,14 +122,17 @@ class TimeTableViewCell: UITableViewCell {
         guard let lectmin = lectInfo.minute else{
             return
         }
-        
+        guard let lectDuration = lectInfo.Duration else {
+            return
+        }
+        let duration = lectDuration - 1
         if secs! > 49{
             if hour! - lecthour >= 1{
                 let remaMintTOHour = 60 - lectmin
-                timmerLabel.text = "\(49 - remaMintTOHour - mins! ):0\(59 - secs!)"
+                timmerLabel.text = "\(duration - remaMintTOHour - mins! ):0\(59 - secs!)"
                 
             }else{
-                let reminmint = 49 + lectmin
+                let reminmint = duration + lectmin
                 timmerLabel.text = "\(reminmint - mins!):0\(59 - secs!)"
                 
             }
@@ -137,10 +140,10 @@ class TimeTableViewCell: UITableViewCell {
         }else{
             if hour! - lecthour >= 1{
                 let remaMintTOHour = 60 - lectmin
-                timmerLabel.text = "\(49 - remaMintTOHour - mins! ):\(59 - secs!)"
+                timmerLabel.text = "\(duration - remaMintTOHour - mins! ):\(59 - secs!)"
                 
             }else{
-                let reminMint = 49 + lectmin
+                let reminMint = duration + lectmin
                 timmerLabel.text = "\(reminMint - mins!):\(59 - secs!)"
                 
             }

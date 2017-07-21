@@ -10,20 +10,23 @@ import Foundation
 
 struct lecture{
     let subject:String!
+    //let subjectID:String?
     let hour:Int?
     let minute:Int?
+    let Duration:Int?
     let StartTime:Date!
     let finishTime:Date!
     
-    init(subject:String! ,Hour:Int! , Minute:Int){
+    init(subject:String! ,Hour:Int! , Minute:Int , Duration: Int){
         self.subject = subject
         self.hour = Hour
         self.minute = Minute
+        self.Duration = Duration
         self.StartTime = Date().dateAt(hours: Hour, minutes: Minute)
-        if (minute! + 50) < 60{
-            self.finishTime = Date().dateAt(hours: Hour, minutes: Minute + 50)
+        if (minute! + Duration) < 60{
+            self.finishTime = Date().dateAt(hours: Hour, minutes: Minute + Duration)
         }else{
-            let extratime = (Minute + 50) - 60
+            let extratime = (Minute + Duration) - 60
             self.finishTime = Date().dateAt(hours: Hour + 1, minutes: extratime)
         }
     }

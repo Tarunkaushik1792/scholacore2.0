@@ -23,7 +23,7 @@ class NotificationsViewController: UITableViewController ,NotificationDelegate{
         // Do any additional setup after loading the view.
         notificationVM.delegate = self
         notificationVM.downloadNotifications()
-        notificationVM.newDownloadMethod()
+       // notificationVM.newDownloadMethod()
     }
     
     override func viewWillAppear(_ animated: Bool) {

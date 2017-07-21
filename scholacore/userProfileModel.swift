@@ -86,6 +86,12 @@ class userProfileModel:NSObject {
     }
     
     func logout(){
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let dbref = FIRDatabase.database().reference().child("notificationTokens")
+        if let token = FIRInstanceID.instanceID().token(){
+            let values:NSDictionary = ["pushToken": token,"email":FIRAuth.auth()?.currentUser?.email! ?? "none","active":false]
+            dbref.child(uid!).setValue(values)
+        }
         try? FIRAuth.auth()?.signOut()
         UserDefaults.standard.removeObject(forKey: "userInfo")
         UserDefaults.standard.removeObject(forKey: "userProfileImage")

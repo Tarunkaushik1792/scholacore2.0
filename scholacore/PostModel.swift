@@ -22,6 +22,7 @@ class FBPostModel:NSObject{
     var Content:String!
     var userID:String!
     var PostImageURL:String!
+    var imageAspectRatio:CGFloat!
     
     func addPost(){
         self.userID = FIRAuth.auth()?.currentUser?.uid
@@ -29,7 +30,7 @@ class FBPostModel:NSObject{
         self.delegate?.errorEncountered(error: "User Information Not Found")
         return
         }
-        let value:NSDictionary = ["UserId": self.userID!, "Content" : Content , "Time" : FIRServerValue.timestamp(),"UserName": userName , "PostImageURL" : PostImageURL]
+        let value:NSDictionary = ["UserId": self.userID!, "Content" : Content , "Time" : FIRServerValue.timestamp(),"UserName": userName , "PostImageURL" : PostImageURL ,"aspectRatio" : imageAspectRatio]
         postRef.childByAutoId().setValue(value){(error,fbDatabaseRef) in
             if let err = error{
                 self.delegate?.errorEncountered(error: err.localizedDescription)

@@ -52,7 +52,8 @@ class NotificationViewModel:NSObject{
     }
     
     func downloadNotifications(){
-        noticRef.queryOrderedByKey().queryLimited(toLast: 10).observe(FIRDataEventType.value, with: { (SnapShot) in
+        var handler:UInt = 0
+        handler = noticRef.queryOrderedByKey().queryLimited(toLast: 10).observe(FIRDataEventType.value, with: { (SnapShot) in
             
             guard  SnapShot.childrenCount > 0 else {
                 return
@@ -81,16 +82,20 @@ class NotificationViewModel:NSObject{
             }
             self.lastPostkey = last.key
             self.currentKey = first.key
+        //self.noticRef.removeObserver(withHandle: handler)
         })
-        
+    
     }
     
     func newDownloadMethod(){
-        noticRef.queryOrderedByKey().queryLimited(toLast: 10).observe(.childAdded, with: { (snapShot) in
+        noticRef.queryOrderedByKey().queryLimited(toLast: 1).observe(.childAdded, with: { (snapShot) in
             print(snapShot)
-            let notice = self.notification(snapShot)
-            self.testArray.insert(notice, at: 0)
-            print(self.testArray)
+            if self.lastPostkey != snapShot.key{
+             let notice = self.notification(snapShot)
+             self.delegate?.didFinishedDownloadingNewNotification(notification: notice)
+            self.lastPostkey = snapShot.key
+            }
+          
         })
     }
     

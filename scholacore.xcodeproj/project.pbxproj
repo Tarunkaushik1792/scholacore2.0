@@ -12,6 +12,13 @@
 		EE336A481EDC4F8000068B1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE336A471EDC4F8000068B1B /* GoogleService-Info.plist */; };
 		EE336A4A1EDD818000068B1B /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE336A491EDD818000068B1B /* AddPostViewController.swift */; };
 		EE336A4C1EDD8F8300068B1B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE336A4B1EDD8F8300068B1B /* PostModel.swift */; };
+		EE4DB45D1EF6710F0040AF41 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4DB45B1EF6710F0040AF41 /* ContentCollectionViewCell.swift */; };
+		EE4DB45E1EF6710F0040AF41 /* ContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE4DB45C1EF6710F0040AF41 /* ContentCollectionViewCell.xib */; };
+		EE4DB4611EFACF330040AF41 /* headerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4DB45F1EFACF330040AF41 /* headerCollectionViewCell.swift */; };
+		EE4DB4621EFACF330040AF41 /* headerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE4DB4601EFACF330040AF41 /* headerCollectionViewCell.xib */; };
+		EE4DB4651EFB5D160040AF41 /* postMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4DB4631EFB5D160040AF41 /* postMenuCell.swift */; };
+		EE4DB4661EFB5D160040AF41 /* postMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE4DB4641EFB5D160040AF41 /* postMenuCell.xib */; };
+		EE54BEE91F1BAF820074408F /* timeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE54BEE81F1BAF820074408F /* timeTableViewModel.swift */; };
 		EE9D29C91EDBD59A0056C5CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D29C81EDBD59A0056C5CD /* AppDelegate.swift */; };
 		EE9D29CE1EDBD59A0056C5CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9D29CC1EDBD59A0056C5CD /* Main.storyboard */; };
 		EE9D29D11EDBD59A0056C5CD /* scholacore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE9D29CF1EDBD59A0056C5CD /* scholacore.xcdatamodeld */; };
@@ -53,6 +60,7 @@
 		EE9D2A441EDBE2930056C5CD /* addNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D2A431EDBE2930056C5CD /* addNotificationViewController.swift */; };
 		EE9D2A461EDBE2CB0056C5CD /* subjectDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D2A451EDBE2CB0056C5CD /* subjectDetailsTableView.swift */; };
 		EE9D2A481EDBE2F50056C5CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D2A471EDBE2F50056C5CD /* DetailViewController.swift */; };
+		EED80D6E1F0BF08D00414042 /* postDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED80D6D1F0BF08D00414042 /* postDetailVC.swift */; };
 		F32C3788432F268330AA3081 /* Pods_scholacoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791561A232E63CB8264A9F37 /* Pods_scholacoreTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +93,13 @@
 		EE336A471EDC4F8000068B1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE336A491EDD818000068B1B /* AddPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		EE336A4B1EDD8F8300068B1B /* PostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		EE4DB45B1EF6710F0040AF41 /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE4DB45C1EF6710F0040AF41 /* ContentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE4DB45F1EFACF330040AF41 /* headerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE4DB4601EFACF330040AF41 /* headerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = headerCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE4DB4631EFB5D160040AF41 /* postMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postMenuCell.swift; sourceTree = "<group>"; };
+		EE4DB4641EFB5D160040AF41 /* postMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postMenuCell.xib; sourceTree = "<group>"; };
+		EE54BEE81F1BAF820074408F /* timeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableViewModel.swift; sourceTree = "<group>"; };
 		EE9D29C51EDBD59A0056C5CD /* scholacore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scholacore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE9D29C81EDBD59A0056C5CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE9D29CD1EDBD59A0056C5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +148,7 @@
 		EE9D2A451EDBE2CB0056C5CD /* subjectDetailsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subjectDetailsTableView.swift; sourceTree = "<group>"; };
 		EE9D2A471EDBE2F50056C5CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EE9D2A491EDBE45D0056C5CD /* scholacore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = scholacore.entitlements; sourceTree = "<group>"; };
+		EED80D6D1F0BF08D00414042 /* postDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postDetailVC.swift; sourceTree = "<group>"; };
 		FDD9A0085BA07CB089DFA1B8 /* Pods-scholacoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scholacoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-scholacoreTests/Pods-scholacoreTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +277,7 @@
 				EE9D2A1F1EDBDD560056C5CD /* FeedModel.swift */,
 				EE9D2A211EDBDD7E0056C5CD /* NotificationsViewModel.swift */,
 				EE336A4B1EDD8F8300068B1B /* PostModel.swift */,
+				EE54BEE81F1BAF820074408F /* timeTableViewModel.swift */,
 			);
 			name = viewModels;
 			sourceTree = "<group>";
@@ -278,6 +295,7 @@
 				EE9D2A451EDBE2CB0056C5CD /* subjectDetailsTableView.swift */,
 				EE9D2A471EDBE2F50056C5CD /* DetailViewController.swift */,
 				EE336A491EDD818000068B1B /* AddPostViewController.swift */,
+				EED80D6D1F0BF08D00414042 /* postDetailVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -338,6 +356,12 @@
 				EE9D2A3D1EDBE1400056C5CD /* TimeTableViewCell.swift */,
 				EE9D2A3F1EDBE1690056C5CD /* FileCollectionViewCell.swift */,
 				EE9D2A401EDBE1690056C5CD /* FileCollectionViewCell.xib */,
+				EE4DB45B1EF6710F0040AF41 /* ContentCollectionViewCell.swift */,
+				EE4DB45C1EF6710F0040AF41 /* ContentCollectionViewCell.xib */,
+				EE4DB45F1EFACF330040AF41 /* headerCollectionViewCell.swift */,
+				EE4DB4601EFACF330040AF41 /* headerCollectionViewCell.xib */,
+				EE4DB4631EFB5D160040AF41 /* postMenuCell.swift */,
+				EE4DB4641EFB5D160040AF41 /* postMenuCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -472,10 +496,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4DB45E1EF6710F0040AF41 /* ContentCollectionViewCell.xib in Resources */,
 				EE9D29D61EDBD59A0056C5CD /* LaunchScreen.storyboard in Resources */,
 				EE336A481EDC4F8000068B1B /* GoogleService-Info.plist in Resources */,
 				EE9D29D31EDBD59A0056C5CD /* Assets.xcassets in Resources */,
 				EE9D2A3C1EDBE1000056C5CD /* PostCollectionCell.xib in Resources */,
+				EE4DB4621EFACF330040AF41 /* headerCollectionViewCell.xib in Resources */,
+				EE4DB4661EFB5D160040AF41 /* postMenuCell.xib in Resources */,
 				EE9D2A421EDBE1690056C5CD /* FileCollectionViewCell.xib in Resources */,
 				EE9D29CE1EDBD59A0056C5CD /* Main.storyboard in Resources */,
 			);
@@ -647,6 +674,7 @@
 				EE9D2A281EDBDEAD0056C5CD /* displaypictureViewController.swift in Sources */,
 				EE9D2A031EDBD8460056C5CD /* extentions.swift in Sources */,
 				EE9D2A241EDBDE520056C5CD /* ProfileSetupPageViewController.swift in Sources */,
+				EED80D6E1F0BF08D00414042 /* postDetailVC.swift in Sources */,
 				EE336A4A1EDD818000068B1B /* AddPostViewController.swift in Sources */,
 				EE9D2A201EDBDD560056C5CD /* FeedModel.swift in Sources */,
 				EE9D29D11EDBD59A0056C5CD /* scholacore.xcdatamodeld in Sources */,
@@ -655,10 +683,12 @@
 				EE9D2A331EDBE0330056C5CD /* TimeTableViewController.swift in Sources */,
 				EE9D2A311EDBE00F0056C5CD /* userProfileTableViewController.swift in Sources */,
 				EE9D29C91EDBD59A0056C5CD /* AppDelegate.swift in Sources */,
+				EE4DB4611EFACF330040AF41 /* headerCollectionViewCell.swift in Sources */,
 				EE9D29FB1EDBD76F0056C5CD /* loginViewModel.swift in Sources */,
 				EE9D2A221EDBDD7E0056C5CD /* NotificationsViewModel.swift in Sources */,
 				EE9D2A1C1EDBDD100056C5CD /* ProfileSetupModel.swift in Sources */,
 				EE9D2A3E1EDBE1400056C5CD /* TimeTableViewCell.swift in Sources */,
+				EE4DB45D1EF6710F0040AF41 /* ContentCollectionViewCell.swift in Sources */,
 				EE9D2A2B1EDBDFA00056C5CD /* MainTabBarVC.swift in Sources */,
 				EE9D2A0D1EDBDA090056C5CD /* Lecture.swift in Sources */,
 				EE9D2A001EDBD7F80056C5CD /* LogInViewController.swift in Sources */,
@@ -666,6 +696,7 @@
 				EE9D2A1A1EDBDCED0056C5CD /* userProfileModel.swift in Sources */,
 				EE9D2A351EDBE0510056C5CD /* NotificationsViewController.swift in Sources */,
 				EE9D2A441EDBE2930056C5CD /* addNotificationViewController.swift in Sources */,
+				EE4DB4651EFB5D160040AF41 /* postMenuCell.swift in Sources */,
 				EE9D29FD1EDBD7B00056C5CD /* Constants.swift in Sources */,
 				EE9D2A0B1EDBD9D50056C5CD /* Post.swift in Sources */,
 				EE9D2A121EDBDA660056C5CD /* ClassFeedSectionController.swift in Sources */,
@@ -676,6 +707,7 @@
 				EE9D2A3B1EDBE1000056C5CD /* PostCollectionCell.swift in Sources */,
 				EE9D2A261EDBDE860056C5CD /* profileSetupViewController.swift in Sources */,
 				EE9D2A061EDBD92F0056C5CD /* User.swift in Sources */,
+				EE54BEE91F1BAF820074408F /* timeTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

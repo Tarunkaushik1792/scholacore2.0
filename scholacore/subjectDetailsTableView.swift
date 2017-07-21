@@ -10,6 +10,7 @@ import UIKit
 class subjectDetailsTableView: UITableViewController {
     
     var subjectTitle:String!
+    @IBOutlet var subjectContentImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,14 @@ class subjectDetailsTableView: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailNav") as! UINavigationController
+        let target = vc.topViewController as! DetailViewController
+            target.postImage = subjectContentImageView.image
+            present(WithAnimation: vc)
+        }
+    }
     // MARK: - Table view data source
     
     // override func numberOfSections(in tableView: UITableView) -> Int {

@@ -50,6 +50,13 @@ class DetailViewController: UIViewController,UIScrollViewDelegate{
         view.addSubview(detailScrollView)
         detailScrollView.maximumZoomScale = 3.0
         setupGestureReconizer()
+        setupBackButton()
+    }
+    
+    func setupBackButton(){
+        let backbutton = navigationItem.leftBarButtonItem
+        backbutton?.target = self
+        backbutton?.action = #selector(self.didDownSwipe)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -112,13 +119,15 @@ class DetailViewController: UIViewController,UIScrollViewDelegate{
     func handleDoubleTap(){
         if detailScrollView.zoomScale > detailScrollView.minimumZoomScale{
             detailScrollView.setZoomScale(detailScrollView.minimumZoomScale, animated: true)
+            centerTheImageView()
         }else{
             detailScrollView.setZoomScale(detailScrollView.maximumZoomScale, animated: true)
         }
     }
     
     func didDownSwipe(){
-        self.performSegue(withIdentifier: "unwindToMainTab", sender: self )
+        dismiss(animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "unwindToMainTab", sender: self )
     }
     
     func didTapedOnImage(){

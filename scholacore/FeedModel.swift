@@ -110,12 +110,14 @@ class FeedModel: NSObject {
         post.postImageURL = child["PostImageURL"] as! String
         post.UserName = child["UserName"] as! String
         post.intTime = child["Time"] as! Int
+        post.imageAspectRatio = child["aspectRatio"] as? CGFloat
         post.Time = {
             let time = child["Time"] as? TimeInterval
             let date = NSDate(timeIntervalSince1970:time!/1000.0)
             let dateformatter = DateFormatter()
             dateformatter.string(from: date as Date)
             dateformatter.dateStyle = .full
+            dateformatter.dateFormat = "dd MMMM"
             return dateformatter.string(from: date as Date)}()
         let imageview =  UIImageView()
         imageview.sd_setImage(with: URL(string:post.postImageURL))

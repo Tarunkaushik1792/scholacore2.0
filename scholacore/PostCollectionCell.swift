@@ -11,27 +11,25 @@ import SDWebImage
 import Reusable
 
 protocol postAble {
-    func setup(postInfo : Post)
+    func setup(postInfo : Post , width: CGFloat!)
 }
 
 protocol CellActionDelegate:class {
     func didTapedOnImageView(postImageView:UIImageView , View:UIView)
 }
+
 class PostCollectionCell: UICollectionViewCell,NibReusable,postAble {
     
     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
     var currentView:UIViewController? = nil
     weak var delegate:CellActionDelegate?
-    @IBOutlet var userNameLabel: UILabel!
-    @IBOutlet var timeOfPostingLabel: UILabel!
-    @IBOutlet var userProfileImageView: UIImageView!
     @IBOutlet var postImageView: UIImageView! = { let imageView  = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target:self , action : #selector(PostCollectionCell.animation)))
+       // imageView.addGestureRecognizer(UITapGestureRecognizer(target:self , action : #selector(PostCollectionCell.animation)))
         return imageView
     }()
     
-    @IBOutlet var contentLabel: UITextView!
+ //   @IBOutlet var contentLabel: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,15 +46,24 @@ class PostCollectionCell: UICollectionViewCell,NibReusable,postAble {
         //delegate?.didTapedOnImageView(postImageView: postImageView, View: self)
     }
     
-    func setup(postInfo: Post) {
-        self.userNameLabel.text = "BVIMR ADMIN"//postInfo.UserName
-        self.timeOfPostingLabel.text = postInfo.Time
-        self.contentLabel.text = postInfo.content
+    func setup(postInfo: Post , width: CGFloat!) {
+       
         if let imageURL = postInfo.postImageURL{
-            self.postImageView.sd_setImage(with: URL(string: imageURL))
+          self.postImageView.sd_setImage(with: URL(string: imageURL))
         }
+        let height = width/postInfo.imageAspectRatio!
+        print(postImageView.frame)
+        if height <= width{
+            let margin = (width - height) * 0.5
+            self.postImageView.frame = CGRect(x:0,y:0,width:width , height : height)
+        }else{
+            self.postImageView.frame = CGRect(x:0,y:0,width:width , height : height)
+        }
+        print("updated \(postImageView.frame)")
     }
     
+    @IBAction func extraMenuAction(_ sender: Any) {
+    }
     
     
     

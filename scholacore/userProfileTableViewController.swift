@@ -20,10 +20,10 @@ class userProfileTableViewController: UITableViewController , UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.navigationItem.title = "PROFILE"
-        doneBarButton = self.tabBarController?.navigationItem.rightBarButtonItem
-        cancelBarButton = self.tabBarController?.navigationItem.leftBarButtonItem
-        doneBarButton.isEnabled = false
-        cancelBarButton.isEnabled = false
+        //doneBarButton = self.tabBarController?.navigationItem.rightBarButtonItem
+       // cancelBarButton = self.tabBarController?.navigationItem.leftBarButtonItem
+       // doneBarButton.isEnabled = false
+       // cancelBarButton.isEnabled = false
         loadUserProfile()
         addObservers()
     }
@@ -62,7 +62,7 @@ class userProfileTableViewController: UITableViewController , UITextFieldDelegat
     
     func didFinishedSavingUserData() {
         userProfileVM.loadUserData()
-        doneBarButton.isEnabled = false
+        //doneBarButton.isEnabled = false
         self.tabBarController?.navigationItem.rightBarButtonItem = doneBarButton
     }
     
@@ -86,6 +86,7 @@ class userProfileTableViewController: UITableViewController , UITextFieldDelegat
         courseTf.resignFirstResponder()
         
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         savedata()
         textField.resignFirstResponder()
@@ -93,17 +94,22 @@ class userProfileTableViewController: UITableViewController , UITextFieldDelegat
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        doneBarButton.isEnabled = true
+       // doneBarButton.isEnabled = true
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        cancelBarButton.isEnabled = true
-        doneBarButton.isEnabled = true
+      //  cancelBarButton.isEnabled = true
+       // doneBarButton.isEnabled = true
     }
+    
     @IBAction func logOut(_ sender: Any) {
         userProfileVM.logout()
         performSegue(withIdentifier: "unwindToLogin", sender: self)
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LoginPage")
+        navigationController?.popToRootViewController(animated: true)
+        present(WithAnimation: vc!)
     }
     
     @IBAction func changeImage(_ sender: Any) {

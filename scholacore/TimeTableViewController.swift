@@ -21,17 +21,19 @@ import Firebase
 class TimeTableViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,TimeTableCellDelegate {
     @IBOutlet var weekdaysSegmentController: UISegmentedControl!
     @IBOutlet var subjectsTableView: UITableView!
-    var newView:UIView!
+    var newView:UIView?
     @IBOutlet var weekdayContainerView: UIView!
     
     var subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Economics","Principles of Management","Thoery of Everything" , "Engineering maths"]
-    var newSubjects = [lecture(subject:"POM" , Hour:9 , Minute:5),lecture(subject:"spss" , Hour:10 , Minute:0),lecture(subject:"Break" , Hour:9 , Minute:5),lecture(subject:"Research Methodology" , Hour:11 , Minute:00),lecture(subject:"Financial Accounting" , Hour:12 , Minute:10),lecture(subject:"Break" , Hour:9 , Minute:5),lecture(subject:"Managerial economics" , Hour:13, Minute:55),lecture(subject:"Principles of Management" , Hour:14 , Minute:40),lecture(subject:"Principles of Management" , Hour:17 , Minute:20),lecture(subject:"Principles of Management" , Hour:18 , Minute:50)]
+    var newSubjects = [lecture(subject:"POM" , Hour:9 , Minute:10,Duration: 55),lecture(subject:"spss" , Hour:10 , Minute:5,Duration: 55),lecture(subject:"Break" , Hour:9 , Minute:5,Duration: 10),lecture(subject:"Research Methodology" , Hour:11 , Minute:15, Duration: 55),lecture(subject:"Financial Accounting" , Hour:12 , Minute:10, Duration: 55),lecture(subject:"Break" , Hour:9 , Minute:5, Duration: 30),lecture(subject:"Managerial economics" , Hour:13, Minute:45, Duration: 55),lecture(subject:"Principles of Management" , Hour:14 , Minute:40, Duration: 55),lecture(subject:"Principles of Management" , Hour:15 , Minute:35, Duration: 55),lecture(subject:"Principles of Management" , Hour:16 , Minute:30, Duration: 30)]
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(" token \(String(describing: FIRInstanceID.instanceID().token()))")
+       var timetable = timeTableViewModel()
+        //timetable.createTimeTable()
+        timetable.createLecture()
         
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
@@ -53,7 +55,6 @@ class TimeTableViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
     }
     
     func setUpWeekDay(){
@@ -63,56 +64,70 @@ class TimeTableViewController: UIViewController,UITableViewDelegate, UITableView
         let weekDay = myComponet?.weekday
         if weekDay != 1{
             weekdaysSegmentController.selectedSegmentIndex = weekDay! - 2
+            weekdaysSegmentController.sendActions(for: UIControlEvents.valueChanged)
         }else{
             newView = UIView(frame:CGRect(x:subjectsTableView.frame.minX,y:subjectsTableView.frame.minY,width: self.view.bounds.width , height: subjectsTableView.frame.height))
-            let label = UILabel(frame:CGRect(x:newView.bounds.width/2 - 100 ,y:newView.bounds.height/2 - 25 , width:200, height: 50))
+            if let newV = newView{
+            let label = UILabel(frame:CGRect(x:newV.bounds.width/2 - 100 ,y:newV.bounds.height/2 - 25 , width:200, height: 50))
             print("lable frame \(label.frame) and label bounds \(label.bounds)")
-            print("new view frame \(newView.frame) and subjectViewFrame \(subjectsTableView.frame)")
+            print("new view frame \(newV.frame) and subjectViewFrame \(subjectsTableView.frame)")
             label.backgroundColor = UIColor.white
-            newView.backgroundColor = UIColor.blue
+            newV.backgroundColor = UIColor.blue
             label.text = "HOLIDAY"
             label.textAlignment = .center
             label.textColor = UIColor.red
             label.font = UIFont(name: "HelveticaNeue" , size: 36)
-            newView.addSubview(label)
+            newV.addSubview(label)
             //subjectsTableView.removeFromSuperview()
             weekdaysSegmentController.selectedSegmentIndex = UISegmentedControlNoSegment
-            self.view.addSubview(newView)
-        }
+            self.view.addSubview(newV)
+            }}
     }
     
     @IBAction func segmentController(_ sender: Any) {
         
         switch weekdaysSegmentController.selectedSegmentIndex{
         case 0 :
-            subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Economics","Principles of Management","Thoery of Everything" , "Engineering maths"]
+            subjects = ["Strategic Management", "Strategic Management","Break" , "Entrepreneurship Development","Operation Research","Break","Strategic Management","Customer Relationship Management","Consumer Behaviour" , "Mentoring"]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         case 1 :
-            subjects = ["Mathmatics", "Science","Break" , "Biology","TeleCommuncation Accounting","Break","Sports","Principles of engineering","Tarun kaushik" , "Aman Bajaj"]
+            subjects = ["Innovation Tech. & Change Management", "Innovation Tech. & Change Management","Break" , "Digital Marketing","Digital Marketing","Break","Operation Research","Consumer Behaviour","Investment Analysis & Portfolio Management" , "Mentoring"]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         case 2 :
-            subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Aconomics","Principles of Management","Tarun kaushik" , "Aman Bajaj"]
+            subjects = ["Corporate Taxation", "Corporate Taxation","Break" , "Customer Relationship Management","Customer Relationship Management","Break","Strategic Management","Innovation Tech. & Change Management","Entrepreneurship Development" , "OFF"]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         case 3 :
-            subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Aconomics","Principles of Management","Tarun kaushik" , "Aman Bajaj"]
+            subjects = ["Innovation Tech. & Change Management", "Innovation Tech. & Change Management","Break" , "Entrepreneurship Development","Strategic Management","Break","Operations Research","Financial Risk Management","Aptitude Training" , "Aptitude Training "]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         case 4 :
-            subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Aconomics","Principles of Management","Tarun kaushik" , "Aman Bajaj"]
+            subjects = ["CRC", "Corporate Taxation","Break" , "Strategic Management","Entrepreneurship Development","Break","Operation Research","Consumer Behaviour","Financial Risk Management" , "OFF"]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         case 5 :
-            subjects = ["Project Management", "SPSS","Break" , "Research Methodology","Financial Accounting","Break","Managerial Aconomics","Principles of Management","Tarun kaushik" , "Aman Bajaj"]
+            subjects = ["Management Of Financial Services", "Management Of Financial Services","Break" , "Strategic Management","Innovation Tech. & Change Management","OFF","OFF","OFF","OFF" , "OFF"]
             subjectsTableView.reloadData()
-            newView.removeFromSuperview()
+            if let newV = newView{
+                newV.removeFromSuperview()
+            }
             
         default: break
         }
@@ -141,6 +156,9 @@ class TimeTableViewController: UIViewController,UITableViewDelegate, UITableView
         if subjects[indexPath.row] == "Break"{
             let cell = tableView.dequeueReusableCell(withIdentifier: "breaKcell", for: indexPath)
             return cell
+        }else if subjects[indexPath.row] == "OFF"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "off", for: indexPath)
+            return cell
         }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TimeTableViewCell
@@ -155,9 +173,9 @@ class TimeTableViewController: UIViewController,UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if subjects[indexPath.row] == "Break"{
-            return 30.0
+            return 20.0
         }else{
-            return 80.0
+            return 60.0
         }
     }
     

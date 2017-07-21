@@ -24,6 +24,7 @@ class Post{
     var fileName:String?
     var fileUrl:String!
     var fileType:String!
+    var imageAspectRatio:CGFloat?
 }
 
 extension Post:Equatable{

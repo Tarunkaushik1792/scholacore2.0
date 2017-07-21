@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseMessaging
 
 class MainTabBarVC: UITabBarController {
     
@@ -18,6 +20,23 @@ class MainTabBarVC: UITabBarController {
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add , target: FirstViewController() , action: #selector(FirstViewController.addPostAction) ), animated: false)
         self.navigationItem.setLeftBarButton(nil, animated: false)
         tabBar.backgroundColor = UIColor.white
+           print(" token \(String(describing: FIRInstanceID.instanceID().token()))")
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let dbref = FIRDatabase.database().reference().child("notificationTokens")
+        if let token = FIRInstanceID.instanceID().token(){
+        let values:NSDictionary = ["pushToken": token,"email":FIRAuth.auth()?.currentUser?.email! ?? "none","active":true]
+            dbref.child(uid!).setValue(values)
+        }
+      
+    }
+    
+    func tokenRefreshNotification(notification:NSNotification){
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let dbref = FIRDatabase.database().reference().child("notificationTokens")
+        if let token = FIRInstanceID.instanceID().token(){
+            let values:NSDictionary = ["pushToken": token,"email":FIRAuth.auth()?.currentUser?.email! ?? "none","active":true]
+            dbref.child(uid!).setValue(values)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,8 +59,8 @@ class MainTabBarVC: UITabBarController {
             self.navigationItem.setLeftBarButton(nil, animated: false)
                 
             case "Profile": self.navigationItem.title = "PROFILE"
-            self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: userProfileTableViewController() , action:#selector(userProfileTableViewController.savedata) ), animated: false)
-            self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: userProfileTableViewController() , action: #selector(userProfileTableViewController.cancelChange)), animated: false)
+           /* self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: userProfileTableViewController() , action:#selector(userProfileTableViewController.savedata) ), animated: false)
+            self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: userProfileTableViewController() , action: #selector(userProfileTableViewController.cancelChange)), animated: false)*/
             case "TIMETABLE": self.navigationItem.title = "TIMETABLE"
             let switchButton = UISwitch()
             switchButton.isUserInteractionEnabled = true

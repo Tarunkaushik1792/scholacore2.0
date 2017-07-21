@@ -77,6 +77,7 @@ class AddPostViewController: UIViewController ,UIImagePickerControllerDelegate ,
 
     @IBAction func addPostAction(_ sender: Any) {
         postVM.Content = postTextView.text
+        postVM.imageAspectRatio = (postImage.image?.size.width)! / (postImage.image?.size.height)!
         postVM.delegate = self
         let data = UIImageJPEGRepresentation(postImage.image!, 0.9)
         postVM.uploadPostImage(imageData: data!)
